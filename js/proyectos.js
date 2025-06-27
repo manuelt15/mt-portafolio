@@ -1,0 +1,34 @@
+"use strict"
+
+function CurrentTime() {
+    let date = new Date()
+    let hh = date.getHours()
+    let mm = date.getMinutes()
+    let ss = date.getSeconds()
+
+    
+    hh = hh < 10 ? '0' + hh : hh
+    mm = mm < 10 ? '0' + mm : mm
+    ss = ss < 10 ? '0' + ss : ss
+
+    
+    let time = hh + ":" + mm + ":" + ss
+
+    
+    document.getElementById('reloj').innerHTML = time
+}
+
+setInterval(CurrentTime, 1000)
+
+const cursor = document.querySelector(`.cursor`)
+console.log(cursor)
+
+window.addEventListener(`mousemove` , ( e )=>{
+    cursor.style.translate = `${e.clientX}px ${e.clientY}px`
+})
+window.addEventListener(`mousedown` , ()=>{
+    cursor.classList.add(`color--scale`)
+} )
+window.addEventListener(`mouseup` , ()=>{
+    cursor.classList.remove(`color--scale`)
+})
